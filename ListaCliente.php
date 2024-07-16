@@ -11,30 +11,32 @@
     <?php
 
         include('includes/conexao.php');
-        $sql = "select * from cidade";
+        $sql = "select * from cliente";
         //Executa a consulta
         $result = mysqli_query($con, $sql);
         
 
     ?>
     <h1>Consulta de Cidades</h1>
-    <a href="CadastroCidade.html"></a>
-    <table align="center" border="1" width="500">
+    <a href="CadastroCliente.html"></a>
+    <table align="center" border="1" width="400">
         <tr>
-            <th>Código</th>
+            <th>Id</th>
             <th>Nome</th>
-            <th>Estado</th>
-            <th>Alterar</th>
-            <th>Deletar</th>
+            <th>Email</th>
+            <th>Senha</th>
+            <th>Id Cidade</th>
         </tr>
         <?php
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
             echo "<td>" . $row['id']. "</td>";
             echo "<td>" . $row['nome']. "</td>";
-            echo "<td>" . $row['estado']. "</td>";
-            echo "<td><a href='alteraCidade.php?id=".$row['id']."'>Alterar</a></td>";
-            echo "<td><a href='deletaCidade.php?id=".$row['id']."'>Deletar</a></td>";
+            echo "<td>" . $row['email']. "</td>";
+            echo "<td>" . $row['senha']. "</td>";
+            echo "<td>" . $row['id_cidade']. "</td>";
+            echo "<td><a href='alteraCliente.php?id=".$row['id']."'>Alterar</a></td>";
+            echo "<td><a href='deletaCliente.php?id=".$row['id']."'>Deletar</a></td>";
             echo "</tr>";
         }
     ?>
