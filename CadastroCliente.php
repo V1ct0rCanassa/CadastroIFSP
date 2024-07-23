@@ -5,37 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="Cadastro.css">
 </head>
 <body>
-    <?php 
-        include('includes/conexao.php');
-        
-        // Coletando os dados do formulário
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $id_cidade = $_POST['idcidade'];
-
-        echo "<h1>Dados do cliente</h1>";
-        echo "Nome: $nome <br>";
-        echo "Email: $email <br>";
-        echo "Senha: $senha <br>";
-        echo "Id Cidade: $id_cidade <br>";
-
-        // Query SQL para inserir dados na tabela cliente
-        $sql = "INSERT INTO cliente (nome, email, senha, id_cidade) ";
-        $sql .= "VALUES ('$nome', '$email', '$senha', '$id_cidade')";
-
-        echo $sql; // Apenas para debug, pode ser removido posteriormente
-
-        // Executando a query no banco de dados
-        $result = mysqli_query($con, $sql);
-        
-        if ($result) {
-            echo "<h2>Dados Cadastrados com Sucesso</h2>";
-        } else {
-            echo "<h2>Erro ao cadastrar!</h2>" . mysqli_error($con);
-        }
-    ?>
+    <form action="CadastroClienteExe.php" method="post">
+        <fieldset>
+            <legend>Cadastro de Clientes</legend>
+        <div>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome">
+        </div>
+        <div>
+            <label for="email">email: </label>
+            <input type="text" name="email" id="nome">
+        </div>
+        <div>
+            <label for="senha">senha: </label>
+            <input type="password" name="senha" id="nome">
+        </div>
+        <div>
+            <label for="ativo">Ativo: </label>
+            <input type="checkbox" name="ativo" id="nome">
+        </div>
+        <div>
+            <label for="cidade">Cidade: </label>
+            <select name="cidade" id="cidade">
+                <?php
+                    include('includes/conexao.php');
+                    $sql = "select * from cidade";
+                    $result = mysqli_query($con, $sql);
+                    while($row = mysqli_fetch_array($result)){
+                        echo "<option value='". $row['id']."'>"
+                        .$row['nomecidade']."/" . $row['estado']
+                        ."</option>";
+                    }
+                ?>    
+            </select>
+        </div>
+        <div>
+            <button type="submit">Cadastrar</button>
+        </div>
+        </fieldset>
+    </form>
 </body>
 </html>

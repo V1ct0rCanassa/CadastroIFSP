@@ -5,6 +5,7 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $id_cidade = $_POST['idcidade'];
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="alteracadastra.css">
 </head>
 <body>
     <h1>Alterando Cliente</h1>
@@ -30,5 +32,6 @@
             echo "Erro ao atualizar dados!\n" . mysqli_error($con);
 
     ?>
+    <button><a href="ListaCliente.php">Tabela</a></button>
 </body>
 </html>

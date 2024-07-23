@@ -31,7 +31,7 @@
                 <input type="text" name="senha" id="senha" value="<?php echo $row['senha'] ?>">
             </div>
             <div>
-                <label for="idcidade">Id Cidade: </label>
+                <label for="idcidade">Cidade: </label>
                 <input type="text" name="idcidade" id="idcidade" value="<?php echo $row['id_cidade'] ?>">
             </div>
             <input type="hidden" name="id" value="<?php echo $row['id']?>">

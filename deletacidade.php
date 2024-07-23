@@ -20,5 +20,6 @@
         echo "<h2>Erro ao deletar!</h2>";
         echo "<h2>" .mysqli_error($con). "</h2>";
     ?>
+    <button><a href="ListaCliente.php">Tabela</a></button>
 </body>
 </html>
